@@ -8,15 +8,19 @@ export const useSkillPoints = () => {
 
   const updateSkillPoints = (skill: string, delta: number, totalSkillPoints: number) => {
     setSkillPointsSpent((prev) => {
-      const newPoints = Math.max(0, prev[skill] + delta); 
-      const totalSpent = Object.values(prev).reduce((acc, curr) => acc + curr, 0);
+    const initialSkillPoints = Object.fromEntries(SKILL_LIST.map(skill => [skill.name, 0]));
 
-      if (totalSpent - prev[skill] + newPoints <= totalSkillPoints) {
-        return { ...prev, [skill]: newPoints };
-      }
-      return prev; 
+    const currentPoints = Object.keys(prev).length === 0 ? initialSkillPoints : prev;
+
+    const newPoints = Math.max(0, currentPoints[skill] + delta); 
+    const totalSpent = Object.values(currentPoints).reduce((acc, curr) => acc + curr, 0);
+
+    if (totalSpent - currentPoints[skill] + newPoints <= totalSkillPoints) {
+      return { ...currentPoints, [skill]: newPoints };
+    }
+    return currentPoints; 
     });
   };
 
-  return { skillPointsSpent, updateSkillPoints };
+  return { skillPointsSpent, updateSkillPoints, setSkillPointsSpent };
 };
