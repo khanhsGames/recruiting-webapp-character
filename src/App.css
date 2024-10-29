@@ -36,6 +36,56 @@
   color: #61dafb;
 }
 
+.class-item {
+  padding: 20px;
+  margin: auto;
+  width: 200px;
+  /* left: -20%; */
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  position: relative;
+}
+
+.class-met {
+  background-color: #d4edda; 
+  color: #155724; 
+}
+
+.class-not-met {
+  background-color: #f8d7da; 
+  color: #721c24; 
+}
+
+.class-requirements {
+  margin-top: 10px;
+  padding: 10px;
+  padding: 20px;
+  margin: auto;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: hsl(220deg 13% 13%);
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: red;
+}
+
+.close-button:hover {
+  color: #555;
+}
+
+.class-item {
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
